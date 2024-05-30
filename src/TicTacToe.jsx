@@ -4,7 +4,7 @@ const TicTacToe = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isBlueNext, setIsBlueNext] = useState(true);
   const [scores, setScores] = useState({ blue: 0, red: 0 });
-  const hasMounted = useRef(false); // Correctly declare hasMounted using useRef
+  const hasMounted = useRef(false); 
 
 
   useEffect(() => {
@@ -21,9 +21,9 @@ const TicTacToe = () => {
       console.log("No scores found in localStorage. Initializing scores.");
     }
   }, []);
+  
   useEffect(() => {
     if (hasMounted.current) {
-      // Update localStorage whenever scores change
       try {
         localStorage.setItem("ticTacToeScores", JSON.stringify(scores));
         console.log(`Scores updated in localStorage: ${JSON.stringify(scores)}`);
