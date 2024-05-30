@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 const TicTacToe = () => {
+  const initialScore = { blue: 0, red: 0 };
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isBlueNext, setIsBlueNext] = useState(true);
   const [scores, setScores] = useState({ blue: 0, red: 0 });
@@ -85,6 +86,12 @@ const TicTacToe = () => {
     }
   }, [winner, board]);
 
+  const restartGame = () => {
+    setBoard(Array(9).fill(null));
+    setIsBlueNext(true);
+    setScores(initialScore);
+  };
+
   return (
     <div className="container mx-auto mt-8 text-center">
       <h1 className="text-4xl font-bold mb-4">Tic-Tac-Toe</h1>
@@ -120,6 +127,11 @@ const TicTacToe = () => {
           <span className="font-bold text-gray-500">It's a draw!</span>
         </div>
       )}
+      <div className="mb-4">
+        <button onClick={restartGame} className="bg-blue-500 text-white py-2 px-4 rounded mt-4">
+          Restart Game
+        </button>
+      </div>
     </div>
   );
 };
